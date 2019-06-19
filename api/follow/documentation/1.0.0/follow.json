@@ -582,6 +582,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "addresses": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           },
@@ -647,6 +653,12 @@
                 }
               },
               "questions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "addresses": {
                 "type": "array",
                 "items": {
                   "type": "string"

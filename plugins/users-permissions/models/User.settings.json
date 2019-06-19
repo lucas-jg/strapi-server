@@ -72,6 +72,10 @@
     "questions": {
       "collection": "question",
       "via": "owner"
+    },
+    "addresses": {
+      "collection": "address",
+      "via": "owner"
     }
   },
   "collectionName": "users-permissions_user"

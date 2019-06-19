@@ -726,6 +726,9 @@
                 },
                 "option": {
                   "type": "json"
+                },
+                "tax_type": {
+                  "type": "integer"
                 }
               }
             }

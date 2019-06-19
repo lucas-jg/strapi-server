@@ -102,8 +102,13 @@
       "via": "good"
     },
     "option": {
-      "required": false,
       "type": "json"
+    },
+    "tax_type": {
+      "type": "integer"
+    },
+    "tax": {
+      "type": "integer"
     }
   }
 }

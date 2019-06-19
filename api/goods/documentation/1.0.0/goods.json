@@ -586,6 +586,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "addresses": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           },
@@ -798,11 +804,12 @@
             "items": {
               "required": [
                 "id",
-                "price",
+                "kr_price",
                 "active",
                 "quantity",
                 "sold_quantity",
-                "quantity_management"
+                "quantity_management",
+                "en_price"
               ],
               "properties": {
                 "id": {
@@ -811,7 +818,7 @@
                 "good": {
                   "type": "string"
                 },
-                "price": {
+                "kr_price": {
                   "type": "integer"
                 },
                 "active": {
@@ -828,12 +835,27 @@
                 },
                 "memo": {
                   "type": "string"
+                },
+                "th_price": {
+                  "type": "integer"
+                },
+                "ph_price": {
+                  "type": "integer"
+                },
+                "en_price": {
+                  "type": "integer"
+                },
+                "vn_price": {
+                  "type": "integer"
                 }
               }
             }
           },
           "option": {
             "type": "json"
+          },
+          "tax_type": {
+            "type": "integer"
           }
         }
       },
@@ -922,6 +944,9 @@
           },
           "option": {
             "type": "json"
+          },
+          "tax_type": {
+            "type": "integer"
           }
         }
       }

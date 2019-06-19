@@ -646,6 +646,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "addresses": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           }

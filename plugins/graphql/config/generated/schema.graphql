@@ -1,3 +1,28 @@
+type Address {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  country: String
+  street_address_1: String
+  street_address_2: String
+  city: String
+  state: String
+  postal_code: String
+  owner: UsersPermissionsUser
+  used_time: DateTime
+}
+
+input AddressInput {
+  country: String
+  street_address_1: String
+  street_address_2: String
+  city: String
+  state: String
+  postal_code: String
+  owner: ID
+  used_time: DateTime
+}
+
 type Businessmanager {
   id: ID!
   created_at: DateTime!
@@ -73,6 +98,14 @@ input CategoryInput {
   ph_name: String
   en_name: String!
   goods: [ID]
+}
+
+input createAddressInput {
+  data: AddressInput
+}
+
+type createAddressPayload {
+  address: Address
 }
 
 input createBusinessmanagerInput {
@@ -160,6 +193,14 @@ The `DateTime` scalar represents a date and time following the ISO 8601 standard
 """
 scalar DateTime
 
+input deleteAddressInput {
+  where: InputID
+}
+
+type deleteAddressPayload {
+  address: Address
+}
+
 input deleteBusinessmanagerInput {
   where: InputID
 }
@@ -238,6 +279,17 @@ input deleteUserInput {
 
 type deleteUserPayload {
   user: UsersPermissionsUser
+}
+
+input editAddressInput {
+  country: String
+  street_address_1: String
+  street_address_2: String
+  city: String
+  state: String
+  postal_code: String
+  owner: ID
+  used_time: DateTime
 }
 
 input editBusinessmanagerInput {
@@ -320,16 +372,21 @@ input editGoodsInput {
   kr_hashtag: String
   options: [ID]
   option: JSON
+  tax_type: Int
 }
 
 input editOptionInput {
   good: ID
-  price: Int
+  kr_price: Int
   active: Boolean
   quantity: Int
   sold_quantity: Int
   quantity_management: Boolean
   memo: String
+  th_price: Int
+  ph_price: Int
+  en_price: Int
+  vn_price: Int
 }
 
 input editQuestionInput {
@@ -368,6 +425,7 @@ input editUserInput {
   follows: [ID]
   reviews: [ID]
   questions: [ID]
+  addresses: [ID]
 }
 
 input FileInput {
@@ -424,6 +482,7 @@ type Goods {
   en_hashtag: String
   kr_hashtag: String
   option: JSON
+  tax_type: Int
   thumbnail(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   detail_image(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   options(sort: String, limit: Int, start: Int, where: JSON): [Option]
@@ -457,6 +516,7 @@ input GoodsInput {
   kr_hashtag: String
   options: [ID]
   option: JSON
+  tax_type: Int
 }
 
 input InputID {
@@ -471,9 +531,12 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Businessmanager | createBusinessmanagerPayload | updateBusinessmanagerPayload | deleteBusinessmanagerPayload | Businessprofile | createBusinessprofilePayload | updateBusinessprofilePayload | deleteBusinessprofilePayload | Category | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | Follow | createFollowPayload | updateFollowPayload | deleteFollowPayload | Goods | createGoodsPayload | updateGoodsPayload | deleteGoodsPayload | Option | createOptionPayload | updateOptionPayload | deleteOptionPayload | Question | createQuestionPayload | updateQuestionPayload | deleteQuestionPayload | Review | createReviewPayload | updateReviewPayload | deleteReviewPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Address | createAddressPayload | updateAddressPayload | deleteAddressPayload | Businessmanager | createBusinessmanagerPayload | updateBusinessmanagerPayload | deleteBusinessmanagerPayload | Businessprofile | createBusinessprofilePayload | updateBusinessprofilePayload | deleteBusinessprofilePayload | Category | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | Follow | createFollowPayload | updateFollowPayload | deleteFollowPayload | Goods | createGoodsPayload | updateGoodsPayload | deleteGoodsPayload | Option | createOptionPayload | updateOptionPayload | deleteOptionPayload | Question | createQuestionPayload | updateQuestionPayload | deleteQuestionPayload | Review | createReviewPayload | updateReviewPayload | deleteReviewPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
 
 type Mutation {
+  createAddress(input: createAddressInput): createAddressPayload
+  updateAddress(input: updateAddressInput): updateAddressPayload
+  deleteAddress(input: deleteAddressInput): deleteAddressPayload
   createBusinessmanager(input: createBusinessmanagerInput): createBusinessmanagerPayload
   updateBusinessmanager(input: updateBusinessmanagerInput): updateBusinessmanagerPayload
   deleteBusinessmanager(input: deleteBusinessmanagerInput): deleteBusinessmanagerPayload
@@ -524,25 +587,35 @@ type Option {
   created_at: DateTime!
   updated_at: DateTime!
   good: Goods
-  price: Int!
+  kr_price: Int!
   active: Boolean!
   quantity: Int!
   sold_quantity: Int!
   quantity_management: Boolean!
   memo: String
+  th_price: Int
+  ph_price: Int
+  en_price: Int!
+  vn_price: Int
 }
 
 input OptionInput {
   good: ID
-  price: Int!
+  kr_price: Int!
   active: Boolean!
   quantity: Int!
   sold_quantity: Int!
   quantity_management: Boolean!
   memo: String
+  th_price: Int
+  ph_price: Int
+  en_price: Int!
+  vn_price: Int
 }
 
 type Query {
+  address(id: ID!): Address
+  addresses(sort: String, limit: Int, start: Int, where: JSON): [Address]
   businessmanager(id: ID!): Businessmanager
   businessmanagers(sort: String, limit: Int, start: Int, where: JSON): [Businessmanager]
   businessprofile(id: ID!): Businessprofile
@@ -609,6 +682,15 @@ input RoleInput {
   type: String
   permissions: [ID]
   users: [ID]
+}
+
+input updateAddressInput {
+  where: InputID
+  data: editAddressInput
+}
+
+type updateAddressPayload {
+  address: Address
 }
 
 input updateBusinessmanagerInput {
@@ -735,6 +817,7 @@ input UserInput {
   follows: [ID]
   reviews: [ID]
   questions: [ID]
+  addresses: [ID]
 }
 
 type UsersPermissionsMe {
@@ -786,4 +869,5 @@ type UsersPermissionsUser {
   follows(sort: String, limit: Int, start: Int, where: JSON): [Follow]
   reviews(sort: String, limit: Int, start: Int, where: JSON): [Review]
   questions(sort: String, limit: Int, start: Int, where: JSON): [Question]
+  addresses(sort: String, limit: Int, start: Int, where: JSON): [Address]
 }
