@@ -52,6 +52,18 @@
     "goods": {
       "collection": "goods",
       "via": "owner"
+    },
+    "businessprofile": {
+      "model": "businessprofile",
+      "via": "user"
+    },
+    "following_follows": {
+      "collection": "follow",
+      "via": "follower"
+    },
+    "follows": {
+      "collection": "follow",
+      "via": "followee"
     }
   },
   "collectionName": "users-permissions_user"

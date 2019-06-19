@@ -535,6 +535,51 @@
           "tax_receipt": {
             "type": "boolean",
             "default": true
+          },
+          "businessprofile": {
+            "required": [
+              "id",
+              "name",
+              "registration_number",
+              "sales_report_number",
+              "phone_number",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "registration_number": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "address": {
+                "type": "string"
+              },
+              "sales_report_number": {
+                "type": "string"
+              },
+              "representative_number": {
+                "type": "string"
+              },
+              "phone_number": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "businessmanagers": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -561,6 +606,9 @@
           "tax_receipt": {
             "type": "boolean",
             "default": true
+          },
+          "businessprofile": {
+            "type": "string"
           }
         }
       }

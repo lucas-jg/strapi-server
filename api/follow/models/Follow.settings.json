@@ -1,0 +1,25 @@
+{
+  "connection": "default",
+  "collectionName": "follows",
+  "info": {
+    "name": "follow",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "follower": {
+      "model": "user",
+      "via": "following_follows",
+      "plugin": "users-permissions"
+    },
+    "followee": {
+      "model": "user",
+      "via": "follows",
+      "plugin": "users-permissions"
+    }
+  }
+}

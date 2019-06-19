@@ -7,6 +7,7 @@ type Businessmanager {
   phone_number: String!
   email: String
   tax_receipt: Boolean!
+  businessprofile: Businessprofile
 }
 
 input BusinessmanagerInput {
@@ -15,6 +16,7 @@ input BusinessmanagerInput {
   phone_number: String!
   email: String
   tax_receipt: Boolean!
+  businessprofile: ID
 }
 
 type Businessprofile {
@@ -29,6 +31,7 @@ type Businessprofile {
   representative_number: String
   phone_number: String!
   email: String!
+  businessmanagers(sort: String, limit: Int, start: Int, where: JSON): [Businessmanager]
 }
 
 input BusinessprofileInput {
@@ -40,6 +43,7 @@ input BusinessprofileInput {
   representative_number: String
   phone_number: String!
   email: String!
+  businessmanagers: [ID]
 }
 
 type Category {
@@ -176,6 +180,7 @@ input editBusinessmanagerInput {
   phone_number: String
   email: String
   tax_receipt: Boolean
+  businessprofile: ID
 }
 
 input editBusinessprofileInput {
@@ -187,6 +192,7 @@ input editBusinessprofileInput {
   representative_number: String
   phone_number: String
   email: String
+  businessmanagers: [ID]
 }
 
 input editCategoryInput {

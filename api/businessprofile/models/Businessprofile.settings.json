@@ -43,6 +43,11 @@
     "businessmanagers": {
       "collection": "businessmanager",
       "via": "businessprofile"
+    },
+    "user": {
+      "model": "user",
+      "via": "businessprofile",
+      "plugin": "users-permissions"
     }
   }
 }
