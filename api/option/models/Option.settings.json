@@ -1,0 +1,44 @@
+{
+  "connection": "default",
+  "collectionName": "options",
+  "info": {
+    "name": "option",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "good": {
+      "model": "goods",
+      "via": "options"
+    },
+    "price": {
+      "type": "integer",
+      "required": true
+    },
+    "active": {
+      "required": true,
+      "default": true,
+      "type": "boolean"
+    },
+    "quantity": {
+      "type": "integer",
+      "required": true
+    },
+    "sold_quantity": {
+      "type": "integer",
+      "required": true
+    },
+    "quantity_management": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "memo": {
+      "type": "text"
+    }
+  }
+}

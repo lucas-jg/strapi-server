@@ -1,0 +1,33 @@
+{
+  "connection": "default",
+  "collectionName": "reviews",
+  "info": {
+    "name": "review",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "content": {
+      "type": "text",
+      "required": true
+    },
+    "owner": {
+      "model": "user",
+      "via": "reviews",
+      "plugin": "users-permissions"
+    },
+    "image": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "rate": {
+      "type": "integer",
+      "required": true
+    }
+  }
+}

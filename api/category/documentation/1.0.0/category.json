@@ -717,6 +717,15 @@
                 },
                 "kr_hashtag": {
                   "type": "string"
+                },
+                "options": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "option": {
+                  "type": "json"
                 }
               }
             }

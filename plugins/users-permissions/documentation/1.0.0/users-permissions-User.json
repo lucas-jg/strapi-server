@@ -1256,6 +1256,156 @@
                 },
                 "kr_hashtag": {
                   "type": "string"
+                },
+                "options": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "option": {
+                  "type": "json"
+                }
+              }
+            }
+          },
+          "businessprofile": {
+            "required": [
+              "id",
+              "name",
+              "registration_number",
+              "sales_report_number",
+              "phone_number",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "registration_number": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "address": {
+                "type": "string"
+              },
+              "sales_report_number": {
+                "type": "string"
+              },
+              "representative_number": {
+                "type": "string"
+              },
+              "phone_number": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "businessmanagers": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "user": {
+                "type": "string"
+              }
+            }
+          },
+          "following_follows": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "follower": {
+                  "type": "string"
+                },
+                "followee": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "follows": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "follower": {
+                  "type": "string"
+                },
+                "followee": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "reviews": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "content",
+                "rate"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "content": {
+                  "type": "string"
+                },
+                "owner": {
+                  "type": "string"
+                },
+                "image": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "rate": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "questions": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "owner": {
+                  "type": "string"
+                },
+                "content": {
+                  "type": "string"
+                },
+                "image": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -1298,6 +1448,33 @@
             "type": "string"
           },
           "goods": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "businessprofile": {
+            "type": "string"
+          },
+          "following_follows": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "follows": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reviews": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "questions": {
             "type": "array",
             "items": {
               "type": "string"

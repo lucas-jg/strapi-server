@@ -559,6 +559,33 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "businessprofile": {
+                "type": "string"
+              },
+              "following_follows": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "follows": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "reviews": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "questions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           },
@@ -765,6 +792,48 @@
           },
           "kr_hashtag": {
             "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "price",
+                "active",
+                "quantity",
+                "sold_quantity",
+                "quantity_management"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "good": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "boolean"
+                },
+                "quantity": {
+                  "type": "integer"
+                },
+                "sold_quantity": {
+                  "type": "integer"
+                },
+                "quantity_management": {
+                  "type": "boolean"
+                },
+                "memo": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "option": {
+            "type": "json"
           }
         }
       },
@@ -844,6 +913,15 @@
           },
           "kr_hashtag": {
             "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "option": {
+            "type": "json"
           }
         }
       }

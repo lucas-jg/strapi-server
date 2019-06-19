@@ -64,6 +64,14 @@
     "follows": {
       "collection": "follow",
       "via": "followee"
+    },
+    "reviews": {
+      "collection": "review",
+      "via": "owner"
+    },
+    "questions": {
+      "collection": "question",
+      "via": "owner"
     }
   },
   "collectionName": "users-permissions_user"

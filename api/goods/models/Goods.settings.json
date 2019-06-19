@@ -96,6 +96,14 @@
     },
     "kr_hashtag": {
       "type": "string"
+    },
+    "options": {
+      "collection": "option",
+      "via": "good"
+    },
+    "option": {
+      "required": false,
+      "type": "json"
     }
   }
 }

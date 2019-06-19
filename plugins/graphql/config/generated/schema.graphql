@@ -31,6 +31,7 @@ type Businessprofile {
   representative_number: String
   phone_number: String!
   email: String!
+  user: UsersPermissionsUser
   businessmanagers(sort: String, limit: Int, start: Int, where: JSON): [Businessmanager]
 }
 
@@ -44,6 +45,7 @@ input BusinessprofileInput {
   phone_number: String!
   email: String!
   businessmanagers: [ID]
+  user: ID
 }
 
 type Category {
@@ -97,12 +99,44 @@ type createCategoryPayload {
   category: Category
 }
 
+input createFollowInput {
+  data: FollowInput
+}
+
+type createFollowPayload {
+  follow: Follow
+}
+
 input createGoodsInput {
   data: GoodsInput
 }
 
 type createGoodsPayload {
   good: Goods
+}
+
+input createOptionInput {
+  data: OptionInput
+}
+
+type createOptionPayload {
+  option: Option
+}
+
+input createQuestionInput {
+  data: QuestionInput
+}
+
+type createQuestionPayload {
+  question: Question
+}
+
+input createReviewInput {
+  data: ReviewInput
+}
+
+type createReviewPayload {
+  review: Review
 }
 
 input createRoleInput {
@@ -150,12 +184,44 @@ type deleteCategoryPayload {
   category: Category
 }
 
+input deleteFollowInput {
+  where: InputID
+}
+
+type deleteFollowPayload {
+  follow: Follow
+}
+
 input deleteGoodsInput {
   where: InputID
 }
 
 type deleteGoodsPayload {
   good: Goods
+}
+
+input deleteOptionInput {
+  where: InputID
+}
+
+type deleteOptionPayload {
+  option: Option
+}
+
+input deleteQuestionInput {
+  where: InputID
+}
+
+type deleteQuestionPayload {
+  question: Question
+}
+
+input deleteReviewInput {
+  where: InputID
+}
+
+type deleteReviewPayload {
+  review: Review
 }
 
 input deleteRoleInput {
@@ -193,6 +259,7 @@ input editBusinessprofileInput {
   phone_number: String
   email: String
   businessmanagers: [ID]
+  user: ID
 }
 
 input editCategoryInput {
@@ -218,6 +285,11 @@ input editFileInput {
   provider: String
   public_id: String
   related: [ID]
+}
+
+input editFollowInput {
+  follower: ID
+  followee: ID
 }
 
 input editGoodsInput {
@@ -246,6 +318,31 @@ input editGoodsInput {
   ph_hashtag: String
   en_hashtag: String
   kr_hashtag: String
+  options: [ID]
+  option: JSON
+}
+
+input editOptionInput {
+  good: ID
+  price: Int
+  active: Boolean
+  quantity: Int
+  sold_quantity: Int
+  quantity_management: Boolean
+  memo: String
+}
+
+input editQuestionInput {
+  owner: ID
+  content: String
+  image: [ID]
+}
+
+input editReviewInput {
+  content: String
+  owner: ID
+  image: [ID]
+  rate: Int
 }
 
 input editRoleInput {
@@ -266,6 +363,11 @@ input editUserInput {
   blocked: Boolean
   role: ID
   goods: [ID]
+  businessprofile: ID
+  following_follows: [ID]
+  follows: [ID]
+  reviews: [ID]
+  questions: [ID]
 }
 
 input FileInput {
@@ -279,6 +381,19 @@ input FileInput {
   provider: String!
   public_id: String
   related: [ID]
+}
+
+type Follow {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  follower: UsersPermissionsUser
+  followee: UsersPermissionsUser
+}
+
+input FollowInput {
+  follower: ID
+  followee: ID
 }
 
 type Goods {
@@ -308,8 +423,10 @@ type Goods {
   ph_hashtag: String
   en_hashtag: String
   kr_hashtag: String
+  option: JSON
   thumbnail(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   detail_image(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  options(sort: String, limit: Int, start: Int, where: JSON): [Option]
 }
 
 input GoodsInput {
@@ -338,6 +455,8 @@ input GoodsInput {
   ph_hashtag: String
   en_hashtag: String
   kr_hashtag: String
+  options: [ID]
+  option: JSON
 }
 
 input InputID {
@@ -352,7 +471,7 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Businessmanager | createBusinessmanagerPayload | updateBusinessmanagerPayload | deleteBusinessmanagerPayload | Businessprofile | createBusinessprofilePayload | updateBusinessprofilePayload | deleteBusinessprofilePayload | Category | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | Goods | createGoodsPayload | updateGoodsPayload | deleteGoodsPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Businessmanager | createBusinessmanagerPayload | updateBusinessmanagerPayload | deleteBusinessmanagerPayload | Businessprofile | createBusinessprofilePayload | updateBusinessprofilePayload | deleteBusinessprofilePayload | Category | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | Follow | createFollowPayload | updateFollowPayload | deleteFollowPayload | Goods | createGoodsPayload | updateGoodsPayload | deleteGoodsPayload | Option | createOptionPayload | updateOptionPayload | deleteOptionPayload | Question | createQuestionPayload | updateQuestionPayload | deleteQuestionPayload | Review | createReviewPayload | updateReviewPayload | deleteReviewPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
 
 type Mutation {
   createBusinessmanager(input: createBusinessmanagerInput): createBusinessmanagerPayload
@@ -364,9 +483,21 @@ type Mutation {
   createCategory(input: createCategoryInput): createCategoryPayload
   updateCategory(input: updateCategoryInput): updateCategoryPayload
   deleteCategory(input: deleteCategoryInput): deleteCategoryPayload
+  createFollow(input: createFollowInput): createFollowPayload
+  updateFollow(input: updateFollowInput): updateFollowPayload
+  deleteFollow(input: deleteFollowInput): deleteFollowPayload
   createGoods(input: createGoodsInput): createGoodsPayload
   updateGoods(input: updateGoodsInput): updateGoodsPayload
   deleteGoods(input: deleteGoodsInput): deleteGoodsPayload
+  createOption(input: createOptionInput): createOptionPayload
+  updateOption(input: updateOptionInput): updateOptionPayload
+  deleteOption(input: deleteOptionInput): deleteOptionPayload
+  createQuestion(input: createQuestionInput): createQuestionPayload
+  updateQuestion(input: updateQuestionInput): updateQuestionPayload
+  deleteQuestion(input: deleteQuestionInput): deleteQuestionPayload
+  createReview(input: createReviewInput): createReviewPayload
+  updateReview(input: updateReviewInput): updateReviewPayload
+  deleteReview(input: deleteReviewInput): deleteReviewPayload
 
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
@@ -388,6 +519,29 @@ type Mutation {
   upload(refId: ID, ref: String, source: String, file: Upload!): UploadFile!
 }
 
+type Option {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  good: Goods
+  price: Int!
+  active: Boolean!
+  quantity: Int!
+  sold_quantity: Int!
+  quantity_management: Boolean!
+  memo: String
+}
+
+input OptionInput {
+  good: ID
+  price: Int!
+  active: Boolean!
+  quantity: Int!
+  sold_quantity: Int!
+  quantity_management: Boolean!
+  memo: String
+}
+
 type Query {
   businessmanager(id: ID!): Businessmanager
   businessmanagers(sort: String, limit: Int, start: Int, where: JSON): [Businessmanager]
@@ -395,8 +549,16 @@ type Query {
   businessprofiles(sort: String, limit: Int, start: Int, where: JSON): [Businessprofile]
   category(id: ID!): Category
   categories(sort: String, limit: Int, start: Int, where: JSON): [Category]
+  follow(id: ID!): Follow
+  follows(sort: String, limit: Int, start: Int, where: JSON): [Follow]
   good(id: ID!): Goods
   goods(sort: String, limit: Int, start: Int, where: JSON): [Goods]
+  option(id: ID!): Option
+  options(sort: String, limit: Int, start: Int, where: JSON): [Option]
+  question(id: ID!): Question
+  questions(sort: String, limit: Int, start: Int, where: JSON): [Question]
+  review(id: ID!): Review
+  reviews(sort: String, limit: Int, start: Int, where: JSON): [Review]
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   role(id: ID!): UsersPermissionsRole
 
@@ -407,6 +569,38 @@ type Query {
   user(id: ID!): UsersPermissionsUser
   users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
   me: UsersPermissionsMe
+}
+
+type Question {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  owner: UsersPermissionsUser
+  content: String
+  image(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+input QuestionInput {
+  owner: ID
+  content: String
+  image: [ID]
+}
+
+type Review {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  content: String!
+  owner: UsersPermissionsUser
+  rate: Int!
+  image(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+input ReviewInput {
+  content: String!
+  owner: ID
+  image: [ID]
+  rate: Int!
 }
 
 input RoleInput {
@@ -444,6 +638,15 @@ type updateCategoryPayload {
   category: Category
 }
 
+input updateFollowInput {
+  where: InputID
+  data: editFollowInput
+}
+
+type updateFollowPayload {
+  follow: Follow
+}
+
 input updateGoodsInput {
   where: InputID
   data: editGoodsInput
@@ -451,6 +654,33 @@ input updateGoodsInput {
 
 type updateGoodsPayload {
   good: Goods
+}
+
+input updateOptionInput {
+  where: InputID
+  data: editOptionInput
+}
+
+type updateOptionPayload {
+  option: Option
+}
+
+input updateQuestionInput {
+  where: InputID
+  data: editQuestionInput
+}
+
+type updateQuestionPayload {
+  question: Question
+}
+
+input updateReviewInput {
+  where: InputID
+  data: editReviewInput
+}
+
+type updateReviewPayload {
+  review: Review
 }
 
 input updateRoleInput {
@@ -500,6 +730,11 @@ input UserInput {
   blocked: Boolean
   role: ID
   goods: [ID]
+  businessprofile: ID
+  following_follows: [ID]
+  follows: [ID]
+  reviews: [ID]
+  questions: [ID]
 }
 
 type UsersPermissionsMe {
@@ -545,5 +780,10 @@ type UsersPermissionsUser {
   confirmed: Boolean
   blocked: Boolean
   role: UsersPermissionsRole
+  businessprofile: Businessprofile
   goods(sort: String, limit: Int, start: Int, where: JSON): [Goods]
+  following_follows(sort: String, limit: Int, start: Int, where: JSON): [Follow]
+  follows(sort: String, limit: Int, start: Int, where: JSON): [Follow]
+  reviews(sort: String, limit: Int, start: Int, where: JSON): [Review]
+  questions(sort: String, limit: Int, start: Int, where: JSON): [Question]
 }
