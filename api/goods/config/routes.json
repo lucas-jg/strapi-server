@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/goods",
+      "handler": "Goods.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/goods/count",
+      "handler": "Goods.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/goods/:id",
+      "handler": "Goods.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/goods",
+      "handler": "Goods.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/goods/:id",
+      "handler": "Goods.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/goods/:id",
+      "handler": "Goods.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

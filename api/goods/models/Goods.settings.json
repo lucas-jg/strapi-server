@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "goods",
+  "info": {
+    "name": "goods",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "owner": {
+      "model": "user",
+      "via": "goods",
+      "plugin": "users-permissions"
+    }
+  }
+}

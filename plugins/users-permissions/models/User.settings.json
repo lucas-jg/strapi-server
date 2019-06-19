@@ -49,10 +49,9 @@
       "plugin": "users-permissions",
       "configurable": false
     },
-    "image": {
-      "model": "file",
-      "via": "related",
-      "plugin": "upload"
+    "goods": {
+      "collection": "goods",
+      "via": "owner"
     }
   },
   "collectionName": "users-permissions_user"

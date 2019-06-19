@@ -1,0 +1,45 @@
+{
+  "connection": "default",
+  "collectionName": "categories",
+  "info": {
+    "name": "category",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "parent": {
+      "model": "category",
+      "via": "child"
+    },
+    "child": {
+      "model": "category",
+      "via": "parent"
+    },
+    "code": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "kr_name": {
+      "type": "string",
+      "required": true
+    },
+    "vn_name": {
+      "type": "string"
+    },
+    "th_name": {
+      "type": "string"
+    },
+    "ph_name": {
+      "type": "string"
+    },
+    "en_name": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
