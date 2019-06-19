@@ -626,6 +626,9 @@
               },
               "tax_type": {
                 "type": "integer"
+              },
+              "tax": {
+                "type": "integer"
               }
             }
           },

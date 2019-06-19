@@ -373,6 +373,7 @@ input editGoodsInput {
   options: [ID]
   option: JSON
   tax_type: Int
+  tax: Int
 }
 
 input editOptionInput {
@@ -483,6 +484,7 @@ type Goods {
   kr_hashtag: String
   option: JSON
   tax_type: Int
+  tax: Int
   thumbnail(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   detail_image(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   options(sort: String, limit: Int, start: Int, where: JSON): [Option]
@@ -517,6 +519,7 @@ input GoodsInput {
   options: [ID]
   option: JSON
   tax_type: Int
+  tax: Int
 }
 
 input InputID {

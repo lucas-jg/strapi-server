@@ -856,6 +856,9 @@
           },
           "tax_type": {
             "type": "integer"
+          },
+          "tax": {
+            "type": "integer"
           }
         }
       },
@@ -946,6 +949,9 @@
             "type": "json"
           },
           "tax_type": {
+            "type": "integer"
+          },
+          "tax": {
             "type": "integer"
           }
         }

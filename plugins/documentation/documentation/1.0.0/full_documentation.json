@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "06/19/2019 5:32:48 PM"
+    "x-generation-date": "06/19/2019 5:39:12 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -7300,6 +7300,9 @@
                 },
                 "tax_type": {
                   "type": "integer"
+                },
+                "tax": {
+                  "type": "integer"
                 }
               }
             }
@@ -7863,6 +7866,9 @@
           },
           "tax_type": {
             "type": "integer"
+          },
+          "tax": {
+            "type": "integer"
           }
         }
       },
@@ -7953,6 +7959,9 @@
             "type": "json"
           },
           "tax_type": {
+            "type": "integer"
+          },
+          "tax": {
             "type": "integer"
           }
         }
@@ -8074,6 +8083,9 @@
                 "type": "json"
               },
               "tax_type": {
+                "type": "integer"
+              },
+              "tax": {
                 "type": "integer"
               }
             }
@@ -8834,6 +8846,9 @@
                   "type": "json"
                 },
                 "tax_type": {
+                  "type": "integer"
+                },
+                "tax": {
                   "type": "integer"
                 }
               }
