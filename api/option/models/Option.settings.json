@@ -15,7 +15,7 @@
       "model": "goods",
       "via": "options"
     },
-    "price": {
+    "kr_price": {
       "type": "integer",
       "required": true
     },
@@ -39,6 +39,19 @@
     },
     "memo": {
       "type": "text"
+    },
+    "th_price": {
+      "type": "integer"
+    },
+    "ph_price": {
+      "type": "integer"
+    },
+    "en_price": {
+      "type": "integer",
+      "required": true
+    },
+    "vn_price": {
+      "type": "integer"
     }
   }
 }
