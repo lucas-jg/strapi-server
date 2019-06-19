@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/businessprofiles",
+      "handler": "Businessprofile.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/businessprofiles/count",
+      "handler": "Businessprofile.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/businessprofiles/:id",
+      "handler": "Businessprofile.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/businessprofiles",
+      "handler": "Businessprofile.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/businessprofiles/:id",
+      "handler": "Businessprofile.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/businessprofiles/:id",
+      "handler": "Businessprofile.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

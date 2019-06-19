@@ -1,0 +1,48 @@
+{
+  "connection": "default",
+  "collectionName": "businessprofiles",
+  "info": {
+    "name": "businessprofile",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "registration_number": {
+      "required": true,
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "sales_report_number": {
+      "required": true,
+      "type": "string"
+    },
+    "representative_number": {
+      "type": "string"
+    },
+    "phone_number": {
+      "required": true,
+      "type": "string"
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "businessmanagers": {
+      "collection": "businessmanager",
+      "via": "businessprofile"
+    }
+  }
+}

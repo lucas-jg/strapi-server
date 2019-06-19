@@ -1,3 +1,47 @@
+type Businessmanager {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  position: String!
+  phone_number: String!
+  email: String
+  tax_receipt: Boolean!
+}
+
+input BusinessmanagerInput {
+  name: String!
+  position: String!
+  phone_number: String!
+  email: String
+  tax_receipt: Boolean!
+}
+
+type Businessprofile {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  registration_number: String!
+  type: String
+  address: String
+  sales_report_number: String!
+  representative_number: String
+  phone_number: String!
+  email: String!
+}
+
+input BusinessprofileInput {
+  name: String!
+  registration_number: String!
+  type: String
+  address: String
+  sales_report_number: String!
+  representative_number: String
+  phone_number: String!
+  email: String!
+}
+
 type Category {
   id: ID!
   created_at: DateTime!
@@ -23,6 +67,22 @@ input CategoryInput {
   ph_name: String
   en_name: String!
   goods: [ID]
+}
+
+input createBusinessmanagerInput {
+  data: BusinessmanagerInput
+}
+
+type createBusinessmanagerPayload {
+  businessmanager: Businessmanager
+}
+
+input createBusinessprofileInput {
+  data: BusinessprofileInput
+}
+
+type createBusinessprofilePayload {
+  businessprofile: Businessprofile
 }
 
 input createCategoryInput {
@@ -62,6 +122,22 @@ The `DateTime` scalar represents a date and time following the ISO 8601 standard
 """
 scalar DateTime
 
+input deleteBusinessmanagerInput {
+  where: InputID
+}
+
+type deleteBusinessmanagerPayload {
+  businessmanager: Businessmanager
+}
+
+input deleteBusinessprofileInput {
+  where: InputID
+}
+
+type deleteBusinessprofilePayload {
+  businessprofile: Businessprofile
+}
+
 input deleteCategoryInput {
   where: InputID
 }
@@ -92,6 +168,25 @@ input deleteUserInput {
 
 type deleteUserPayload {
   user: UsersPermissionsUser
+}
+
+input editBusinessmanagerInput {
+  name: String
+  position: String
+  phone_number: String
+  email: String
+  tax_receipt: Boolean
+}
+
+input editBusinessprofileInput {
+  name: String
+  registration_number: String
+  type: String
+  address: String
+  sales_report_number: String
+  representative_number: String
+  phone_number: String
+  email: String
 }
 
 input editCategoryInput {
@@ -127,6 +222,24 @@ input editGoodsInput {
   ph_name: String
   th_name: String
   en_name: String
+  kr_description: String
+  ph_description: String
+  th_description: String
+  en_description: String
+  vn_description: String
+  kr_short_description: String
+  vn_short_description: String
+  th_short_description: String
+  en_short_description: String
+  ph_short_description: String
+  thumbnail: [ID]
+  detail_image: [ID]
+  memo: String
+  vn_hashtag: String
+  th_hashtag: String
+  ph_hashtag: String
+  en_hashtag: String
+  kr_hashtag: String
 }
 
 input editRoleInput {
@@ -173,6 +286,24 @@ type Goods {
   ph_name: String
   th_name: String
   en_name: String!
+  kr_description: String!
+  ph_description: String
+  th_description: String
+  en_description: String!
+  vn_description: String
+  kr_short_description: String
+  vn_short_description: String
+  th_short_description: String
+  en_short_description: String
+  ph_short_description: String
+  memo: String
+  vn_hashtag: String
+  th_hashtag: String
+  ph_hashtag: String
+  en_hashtag: String
+  kr_hashtag: String
+  thumbnail(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  detail_image(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 input GoodsInput {
@@ -183,6 +314,24 @@ input GoodsInput {
   ph_name: String
   th_name: String
   en_name: String!
+  kr_description: String!
+  ph_description: String
+  th_description: String
+  en_description: String!
+  vn_description: String
+  kr_short_description: String
+  vn_short_description: String
+  th_short_description: String
+  en_short_description: String
+  ph_short_description: String
+  thumbnail: [ID]
+  detail_image: [ID]
+  memo: String
+  vn_hashtag: String
+  th_hashtag: String
+  ph_hashtag: String
+  en_hashtag: String
+  kr_hashtag: String
 }
 
 input InputID {
@@ -197,9 +346,15 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Category | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | Goods | createGoodsPayload | updateGoodsPayload | deleteGoodsPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Businessmanager | createBusinessmanagerPayload | updateBusinessmanagerPayload | deleteBusinessmanagerPayload | Businessprofile | createBusinessprofilePayload | updateBusinessprofilePayload | deleteBusinessprofilePayload | Category | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | Goods | createGoodsPayload | updateGoodsPayload | deleteGoodsPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
 
 type Mutation {
+  createBusinessmanager(input: createBusinessmanagerInput): createBusinessmanagerPayload
+  updateBusinessmanager(input: updateBusinessmanagerInput): updateBusinessmanagerPayload
+  deleteBusinessmanager(input: deleteBusinessmanagerInput): deleteBusinessmanagerPayload
+  createBusinessprofile(input: createBusinessprofileInput): createBusinessprofilePayload
+  updateBusinessprofile(input: updateBusinessprofileInput): updateBusinessprofilePayload
+  deleteBusinessprofile(input: deleteBusinessprofileInput): deleteBusinessprofilePayload
   createCategory(input: createCategoryInput): createCategoryPayload
   updateCategory(input: updateCategoryInput): updateCategoryPayload
   deleteCategory(input: deleteCategoryInput): deleteCategoryPayload
@@ -228,6 +383,10 @@ type Mutation {
 }
 
 type Query {
+  businessmanager(id: ID!): Businessmanager
+  businessmanagers(sort: String, limit: Int, start: Int, where: JSON): [Businessmanager]
+  businessprofile(id: ID!): Businessprofile
+  businessprofiles(sort: String, limit: Int, start: Int, where: JSON): [Businessprofile]
   category(id: ID!): Category
   categories(sort: String, limit: Int, start: Int, where: JSON): [Category]
   good(id: ID!): Goods
@@ -250,6 +409,24 @@ input RoleInput {
   type: String
   permissions: [ID]
   users: [ID]
+}
+
+input updateBusinessmanagerInput {
+  where: InputID
+  data: editBusinessmanagerInput
+}
+
+type updateBusinessmanagerPayload {
+  businessmanager: Businessmanager
+}
+
+input updateBusinessprofileInput {
+  where: InputID
+  data: editBusinessprofileInput
+}
+
+type updateBusinessprofilePayload {
+  businessprofile: Businessprofile
 }
 
 input updateCategoryInput {

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/businessmanagers",
+      "handler": "Businessmanager.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/businessmanagers/count",
+      "handler": "Businessmanager.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/businessmanagers/:id",
+      "handler": "Businessmanager.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/businessmanagers",
+      "handler": "Businessmanager.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/businessmanagers/:id",
+      "handler": "Businessmanager.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/businessmanagers/:id",
+      "handler": "Businessmanager.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

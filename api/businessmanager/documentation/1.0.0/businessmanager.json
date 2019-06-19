@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/goods": {
+    "/businessmanagers": {
       "get": {
         "deprecated": false,
-        "description": "Find all the goods's records",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve goods document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Goods"
+                    "$ref": "#/components/schemas/Businessmanager"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Goods"
+          "Businessmanager"
         ],
         "parameters": [
           {
@@ -188,14 +188,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new goods record",
+        "description": "Create a new record",
         "responses": {
           "200": {
-            "description": "Retrieve goods document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Goods"
+                  "$ref": "#/components/schemas/Businessmanager"
                 }
               }
             }
@@ -233,7 +233,7 @@
         },
         "summary": "",
         "tags": [
-          "Goods"
+          "Businessmanager"
         ],
         "requestBody": {
           "description": "",
@@ -241,20 +241,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewGoods"
+                "$ref": "#/components/schemas/NewBusinessmanager"
               }
             }
           }
         }
       }
     },
-    "/goods/count": {
+    "/businessmanagers/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of goods documents",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve goods document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
@@ -300,22 +300,22 @@
         },
         "summary": "",
         "tags": [
-          "Goods"
+          "Businessmanager"
         ],
         "parameters": []
       }
     },
-    "/goods/{id}": {
+    "/businessmanagers/{id}": {
       "get": {
         "deprecated": false,
-        "description": "Find one goods record",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve goods document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Goods"
+                  "$ref": "#/components/schemas/Businessmanager"
                 }
               }
             }
@@ -353,7 +353,7 @@
         },
         "summary": "",
         "tags": [
-          "Goods"
+          "Businessmanager"
         ],
         "parameters": [
           {
@@ -370,14 +370,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single goods record",
+        "description": "Update a record",
         "responses": {
           "200": {
-            "description": "Retrieve goods document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Goods"
+                  "$ref": "#/components/schemas/Businessmanager"
                 }
               }
             }
@@ -415,7 +415,7 @@
         },
         "summary": "",
         "tags": [
-          "Goods"
+          "Businessmanager"
         ],
         "requestBody": {
           "description": "",
@@ -423,7 +423,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewGoods"
+                "$ref": "#/components/schemas/NewBusinessmanager"
               }
             }
           }
@@ -443,10 +443,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single goods record",
+        "description": "Delete a record",
         "responses": {
           "200": {
-            "description": "deletes a single goods based on the ID supplied",
+            "description": "deletes a single record based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -489,7 +489,7 @@
         },
         "summary": "",
         "tags": [
-          "Goods"
+          "Businessmanager"
         ],
         "parameters": [
           {
@@ -508,342 +508,59 @@
   },
   "components": {
     "schemas": {
-      "Goods": {
+      "Businessmanager": {
         "required": [
           "id",
-          "kr_name",
-          "en_name",
-          "kr_description",
-          "en_description"
+          "name",
+          "position",
+          "phone_number",
+          "tax_receipt"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "owner": {
-            "required": [
-              "id",
-              "username",
-              "email"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "username": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "password": {
-                "type": "string"
-              },
-              "resetPasswordToken": {
-                "type": "string"
-              },
-              "confirmed": {
-                "type": "boolean"
-              },
-              "blocked": {
-                "type": "boolean"
-              },
-              "role": {
-                "type": "string"
-              },
-              "goods": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "category": {
-            "required": [
-              "id",
-              "code",
-              "kr_name",
-              "en_name"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "parent": {
-                "type": "string"
-              },
-              "child": {
-                "type": "string"
-              },
-              "code": {
-                "type": "string"
-              },
-              "kr_name": {
-                "type": "string"
-              },
-              "vn_name": {
-                "type": "string"
-              },
-              "th_name": {
-                "type": "string"
-              },
-              "ph_name": {
-                "type": "string"
-              },
-              "en_name": {
-                "type": "string"
-              },
-              "goods": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "kr_name": {
+          "name": {
             "type": "string"
           },
-          "vn_name": {
+          "position": {
             "type": "string"
           },
-          "ph_name": {
+          "phone_number": {
             "type": "string"
           },
-          "th_name": {
+          "email": {
             "type": "string"
           },
-          "en_name": {
-            "type": "string"
-          },
-          "kr_description": {
-            "type": "string"
-          },
-          "ph_description": {
-            "type": "string"
-          },
-          "th_description": {
-            "type": "string"
-          },
-          "en_description": {
-            "type": "string"
-          },
-          "vn_description": {
-            "type": "string"
-          },
-          "kr_short_description": {
-            "type": "string"
-          },
-          "vn_short_description": {
-            "type": "string"
-          },
-          "th_short_description": {
-            "type": "string"
-          },
-          "en_short_description": {
-            "type": "string"
-          },
-          "ph_short_description": {
-            "type": "string"
-          },
-          "thumbnail": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "name",
-                "hash",
-                "mime",
-                "size",
-                "url",
-                "provider"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "hash": {
-                  "type": "string"
-                },
-                "sha256": {
-                  "type": "string"
-                },
-                "ext": {
-                  "type": "string"
-                },
-                "mime": {
-                  "type": "string"
-                },
-                "size": {
-                  "type": "string"
-                },
-                "url": {
-                  "type": "string"
-                },
-                "provider": {
-                  "type": "string"
-                },
-                "public_id": {
-                  "type": "string"
-                },
-                "related": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "detail_image": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "name",
-                "hash",
-                "mime",
-                "size",
-                "url",
-                "provider"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "hash": {
-                  "type": "string"
-                },
-                "sha256": {
-                  "type": "string"
-                },
-                "ext": {
-                  "type": "string"
-                },
-                "mime": {
-                  "type": "string"
-                },
-                "size": {
-                  "type": "string"
-                },
-                "url": {
-                  "type": "string"
-                },
-                "provider": {
-                  "type": "string"
-                },
-                "public_id": {
-                  "type": "string"
-                },
-                "related": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "memo": {
-            "type": "string"
-          },
-          "vn_hashtag": {
-            "type": "string"
-          },
-          "th_hashtag": {
-            "type": "string"
-          },
-          "ph_hashtag": {
-            "type": "string"
-          },
-          "en_hashtag": {
-            "type": "string"
-          },
-          "kr_hashtag": {
-            "type": "string"
+          "tax_receipt": {
+            "type": "boolean",
+            "default": true
           }
         }
       },
-      "NewGoods": {
+      "NewBusinessmanager": {
         "required": [
-          "kr_name",
-          "en_name",
-          "kr_description",
-          "en_description"
+          "name",
+          "position",
+          "phone_number",
+          "tax_receipt"
         ],
         "properties": {
-          "owner": {
+          "name": {
             "type": "string"
           },
-          "category": {
+          "position": {
             "type": "string"
           },
-          "kr_name": {
+          "phone_number": {
             "type": "string"
           },
-          "vn_name": {
+          "email": {
             "type": "string"
           },
-          "ph_name": {
-            "type": "string"
-          },
-          "th_name": {
-            "type": "string"
-          },
-          "en_name": {
-            "type": "string"
-          },
-          "kr_description": {
-            "type": "string"
-          },
-          "ph_description": {
-            "type": "string"
-          },
-          "th_description": {
-            "type": "string"
-          },
-          "en_description": {
-            "type": "string"
-          },
-          "vn_description": {
-            "type": "string"
-          },
-          "kr_short_description": {
-            "type": "string"
-          },
-          "vn_short_description": {
-            "type": "string"
-          },
-          "th_short_description": {
-            "type": "string"
-          },
-          "en_short_description": {
-            "type": "string"
-          },
-          "ph_short_description": {
-            "type": "string"
-          },
-          "memo": {
-            "type": "string"
-          },
-          "vn_hashtag": {
-            "type": "string"
-          },
-          "th_hashtag": {
-            "type": "string"
-          },
-          "ph_hashtag": {
-            "type": "string"
-          },
-          "en_hashtag": {
-            "type": "string"
-          },
-          "kr_hashtag": {
-            "type": "string"
+          "tax_receipt": {
+            "type": "boolean",
+            "default": true
           }
         }
       }
@@ -851,7 +568,7 @@
   },
   "tags": [
     {
-      "name": "Goods"
+      "name": "Businessmanager"
     }
   ]
 }

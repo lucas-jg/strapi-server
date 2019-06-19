@@ -1168,7 +1168,9 @@
               "required": [
                 "id",
                 "kr_name",
-                "en_name"
+                "en_name",
+                "kr_description",
+                "en_description"
               ],
               "properties": {
                 "id": {
@@ -1193,6 +1195,66 @@
                   "type": "string"
                 },
                 "en_name": {
+                  "type": "string"
+                },
+                "kr_description": {
+                  "type": "string"
+                },
+                "ph_description": {
+                  "type": "string"
+                },
+                "th_description": {
+                  "type": "string"
+                },
+                "en_description": {
+                  "type": "string"
+                },
+                "vn_description": {
+                  "type": "string"
+                },
+                "kr_short_description": {
+                  "type": "string"
+                },
+                "vn_short_description": {
+                  "type": "string"
+                },
+                "th_short_description": {
+                  "type": "string"
+                },
+                "en_short_description": {
+                  "type": "string"
+                },
+                "ph_short_description": {
+                  "type": "string"
+                },
+                "thumbnail": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "detail_image": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "memo": {
+                  "type": "string"
+                },
+                "vn_hashtag": {
+                  "type": "string"
+                },
+                "th_hashtag": {
+                  "type": "string"
+                },
+                "ph_hashtag": {
+                  "type": "string"
+                },
+                "en_hashtag": {
+                  "type": "string"
+                },
+                "kr_hashtag": {
                   "type": "string"
                 }
               }
