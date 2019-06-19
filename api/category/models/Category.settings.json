@@ -40,6 +40,10 @@
     "en_name": {
       "type": "string",
       "required": true
+    },
+    "goods": {
+      "collection": "goods",
+      "via": "category"
     }
   }
 }

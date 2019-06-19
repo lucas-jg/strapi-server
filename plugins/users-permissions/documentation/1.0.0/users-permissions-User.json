@@ -1161,6 +1161,42 @@
                 }
               }
             }
+          },
+          "goods": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "kr_name",
+                "en_name"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "owner": {
+                  "type": "string"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "kr_name": {
+                  "type": "string"
+                },
+                "vn_name": {
+                  "type": "string"
+                },
+                "ph_name": {
+                  "type": "string"
+                },
+                "th_name": {
+                  "type": "string"
+                },
+                "en_name": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -1198,6 +1234,12 @@
           },
           "role": {
             "type": "string"
+          },
+          "goods": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }

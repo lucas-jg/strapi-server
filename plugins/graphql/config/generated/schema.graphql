@@ -1,3 +1,46 @@
+type Category {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  parent: Category
+  child: Category
+  code: String!
+  kr_name: String!
+  vn_name: String
+  th_name: String
+  ph_name: String
+  en_name: String!
+  goods(sort: String, limit: Int, start: Int, where: JSON): [Goods]
+}
+
+input CategoryInput {
+  parent: ID
+  child: ID
+  code: String!
+  kr_name: String!
+  vn_name: String
+  th_name: String
+  ph_name: String
+  en_name: String!
+  goods: [ID]
+}
+
+input createCategoryInput {
+  data: CategoryInput
+}
+
+type createCategoryPayload {
+  category: Category
+}
+
+input createGoodsInput {
+  data: GoodsInput
+}
+
+type createGoodsPayload {
+  good: Goods
+}
+
 input createRoleInput {
   data: RoleInput
 }
@@ -19,6 +62,22 @@ The `DateTime` scalar represents a date and time following the ISO 8601 standard
 """
 scalar DateTime
 
+input deleteCategoryInput {
+  where: InputID
+}
+
+type deleteCategoryPayload {
+  category: Category
+}
+
+input deleteGoodsInput {
+  where: InputID
+}
+
+type deleteGoodsPayload {
+  good: Goods
+}
+
 input deleteRoleInput {
   where: InputID
 }
@@ -35,6 +94,18 @@ type deleteUserPayload {
   user: UsersPermissionsUser
 }
 
+input editCategoryInput {
+  parent: ID
+  child: ID
+  code: String
+  kr_name: String
+  vn_name: String
+  th_name: String
+  ph_name: String
+  en_name: String
+  goods: [ID]
+}
+
 input editFileInput {
   name: String
   hash: String
@@ -46,6 +117,16 @@ input editFileInput {
   provider: String
   public_id: String
   related: [ID]
+}
+
+input editGoodsInput {
+  owner: ID
+  category: ID
+  kr_name: String
+  vn_name: String
+  ph_name: String
+  th_name: String
+  en_name: String
 }
 
 input editRoleInput {
@@ -65,6 +146,7 @@ input editUserInput {
   confirmed: Boolean
   blocked: Boolean
   role: ID
+  goods: [ID]
 }
 
 input FileInput {
@@ -80,6 +162,29 @@ input FileInput {
   related: [ID]
 }
 
+type Goods {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  owner: UsersPermissionsUser
+  category: Category
+  kr_name: String!
+  vn_name: String
+  ph_name: String
+  th_name: String
+  en_name: String!
+}
+
+input GoodsInput {
+  owner: ID
+  category: ID
+  kr_name: String!
+  vn_name: String
+  ph_name: String
+  th_name: String
+  en_name: String!
+}
+
 input InputID {
   id: ID!
 }
@@ -92,9 +197,16 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Category | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | Goods | createGoodsPayload | updateGoodsPayload | deleteGoodsPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
 
 type Mutation {
+  createCategory(input: createCategoryInput): createCategoryPayload
+  updateCategory(input: updateCategoryInput): updateCategoryPayload
+  deleteCategory(input: deleteCategoryInput): deleteCategoryPayload
+  createGoods(input: createGoodsInput): createGoodsPayload
+  updateGoods(input: updateGoodsInput): updateGoodsPayload
+  deleteGoods(input: deleteGoodsInput): deleteGoodsPayload
+
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
 
@@ -116,6 +228,10 @@ type Mutation {
 }
 
 type Query {
+  category(id: ID!): Category
+  categories(sort: String, limit: Int, start: Int, where: JSON): [Category]
+  good(id: ID!): Goods
+  goods(sort: String, limit: Int, start: Int, where: JSON): [Goods]
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   role(id: ID!): UsersPermissionsRole
 
@@ -134,6 +250,24 @@ input RoleInput {
   type: String
   permissions: [ID]
   users: [ID]
+}
+
+input updateCategoryInput {
+  where: InputID
+  data: editCategoryInput
+}
+
+type updateCategoryPayload {
+  category: Category
+}
+
+input updateGoodsInput {
+  where: InputID
+  data: editGoodsInput
+}
+
+type updateGoodsPayload {
+  good: Goods
 }
 
 input updateRoleInput {
@@ -182,6 +316,7 @@ input UserInput {
   confirmed: Boolean
   blocked: Boolean
   role: ID
+  goods: [ID]
 }
 
 type UsersPermissionsMe {
@@ -227,4 +362,5 @@ type UsersPermissionsUser {
   confirmed: Boolean
   blocked: Boolean
   role: UsersPermissionsRole
+  goods(sort: String, limit: Int, start: Int, where: JSON): [Goods]
 }

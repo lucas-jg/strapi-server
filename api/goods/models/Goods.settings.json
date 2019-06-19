@@ -15,6 +15,87 @@
       "model": "user",
       "via": "goods",
       "plugin": "users-permissions"
+    },
+    "category": {
+      "model": "category",
+      "via": "goods"
+    },
+    "kr_name": {
+      "type": "string",
+      "required": true
+    },
+    "vn_name": {
+      "type": "string"
+    },
+    "ph_name": {
+      "type": "string"
+    },
+    "th_name": {
+      "type": "string"
+    },
+    "en_name": {
+      "type": "string",
+      "required": true
+    },
+    "kr_description": {
+      "type": "text",
+      "required": true
+    },
+    "ph_description": {
+      "type": "text"
+    },
+    "th_description": {
+      "type": "text"
+    },
+    "en_description": {
+      "type": "text",
+      "required": true
+    },
+    "vn_description": {
+      "type": "text"
+    },
+    "kr_short_description": {
+      "type": "text"
+    },
+    "vn_short_description": {
+      "type": "text"
+    },
+    "th_short_description": {
+      "type": "text"
+    },
+    "en_short_description": {
+      "type": "text"
+    },
+    "ph_short_description": {
+      "type": "text"
+    },
+    "thumbnail": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "detail_image": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "memo": {
+      "type": "text"
+    },
+    "vn_hashtag": {
+      "type": "string"
+    },
+    "th_hashtag": {
+      "type": "string"
+    },
+    "ph_hashtag": {
+      "type": "string"
+    },
+    "en_hashtag": {
+      "type": "string"
+    },
+    "kr_hashtag": {
+      "type": "string"
     }
   }
 }
