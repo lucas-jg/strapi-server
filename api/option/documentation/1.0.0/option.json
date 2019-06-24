@@ -512,11 +512,12 @@
         "required": [
           "id",
           "kr_price",
-          "active",
+          "en_price",
           "quantity",
           "sold_quantity",
+          "active",
           "quantity_management",
-          "en_price"
+          "name"
         ],
         "properties": {
           "id": {
@@ -615,12 +616,6 @@
               "kr_hashtag": {
                 "type": "string"
               },
-              "options": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "option": {
                 "type": "json"
               },
@@ -629,21 +624,39 @@
               },
               "tax": {
                 "type": "integer"
+              },
+              "options": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           },
           "kr_price": {
             "type": "integer"
           },
-          "active": {
-            "type": "boolean",
-            "default": true
+          "en_price": {
+            "type": "integer"
+          },
+          "th_price": {
+            "type": "integer"
+          },
+          "ph_price": {
+            "type": "integer"
+          },
+          "vn_price": {
+            "type": "integer"
           },
           "quantity": {
             "type": "integer"
           },
           "sold_quantity": {
             "type": "integer"
+          },
+          "active": {
+            "type": "boolean",
+            "default": true
           },
           "quantity_management": {
             "type": "boolean",
@@ -652,28 +665,20 @@
           "memo": {
             "type": "string"
           },
-          "th_price": {
-            "type": "integer"
-          },
-          "ph_price": {
-            "type": "integer"
-          },
-          "en_price": {
-            "type": "integer"
-          },
-          "vn_price": {
-            "type": "integer"
+          "name": {
+            "type": "string"
           }
         }
       },
       "NewOption": {
         "required": [
           "kr_price",
-          "active",
+          "en_price",
           "quantity",
           "sold_quantity",
+          "active",
           "quantity_management",
-          "en_price"
+          "name"
         ],
         "properties": {
           "good": {
@@ -682,15 +687,27 @@
           "kr_price": {
             "type": "integer"
           },
-          "active": {
-            "type": "boolean",
-            "default": true
+          "en_price": {
+            "type": "integer"
+          },
+          "th_price": {
+            "type": "integer"
+          },
+          "ph_price": {
+            "type": "integer"
+          },
+          "vn_price": {
+            "type": "integer"
           },
           "quantity": {
             "type": "integer"
           },
           "sold_quantity": {
             "type": "integer"
+          },
+          "active": {
+            "type": "boolean",
+            "default": true
           },
           "quantity_management": {
             "type": "boolean",
@@ -699,17 +716,8 @@
           "memo": {
             "type": "string"
           },
-          "th_price": {
-            "type": "integer"
-          },
-          "ph_price": {
-            "type": "integer"
-          },
-          "en_price": {
-            "type": "integer"
-          },
-          "vn_price": {
-            "type": "integer"
+          "name": {
+            "type": "string"
           }
         }
       }

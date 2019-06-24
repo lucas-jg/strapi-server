@@ -370,24 +370,25 @@ input editGoodsInput {
   ph_hashtag: String
   en_hashtag: String
   kr_hashtag: String
-  options: [ID]
   option: JSON
   tax_type: Int
   tax: Int
+  options: [ID]
 }
 
 input editOptionInput {
   good: ID
   kr_price: Int
-  active: Boolean
-  quantity: Int
-  sold_quantity: Int
-  quantity_management: Boolean
-  memo: String
+  en_price: Int
   th_price: Int
   ph_price: Int
-  en_price: Int
   vn_price: Int
+  quantity: Int
+  sold_quantity: Int
+  active: Boolean
+  quantity_management: Boolean
+  memo: String
+  name: String
 }
 
 input editQuestionInput {
@@ -516,10 +517,10 @@ input GoodsInput {
   ph_hashtag: String
   en_hashtag: String
   kr_hashtag: String
-  options: [ID]
   option: JSON
   tax_type: Int
   tax: Int
+  options: [ID]
 }
 
 input InputID {
@@ -591,29 +592,31 @@ type Option {
   updated_at: DateTime!
   good: Goods
   kr_price: Int!
-  active: Boolean!
-  quantity: Int!
-  sold_quantity: Int!
-  quantity_management: Boolean!
-  memo: String
+  en_price: Int!
   th_price: Int
   ph_price: Int
-  en_price: Int!
   vn_price: Int
+  quantity: Int!
+  sold_quantity: Int!
+  active: Boolean!
+  quantity_management: Boolean!
+  memo: String
+  name: String!
 }
 
 input OptionInput {
   good: ID
   kr_price: Int!
-  active: Boolean!
-  quantity: Int!
-  sold_quantity: Int!
-  quantity_management: Boolean!
-  memo: String
+  en_price: Int!
   th_price: Int
   ph_price: Int
-  en_price: Int!
   vn_price: Int
+  quantity: Int!
+  sold_quantity: Int!
+  active: Boolean!
+  quantity_management: Boolean!
+  memo: String
+  name: String!
 }
 
 type Query {

@@ -97,10 +97,6 @@
     "kr_hashtag": {
       "type": "string"
     },
-    "options": {
-      "collection": "option",
-      "via": "good"
-    },
     "option": {
       "type": "json"
     },
@@ -109,6 +105,10 @@
     },
     "tax": {
       "type": "integer"
+    },
+    "options": {
+      "collection": "option",
+      "via": "good"
     }
   }
 }

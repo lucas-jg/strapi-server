@@ -19,10 +19,18 @@
       "type": "integer",
       "required": true
     },
-    "active": {
-      "required": true,
-      "default": true,
-      "type": "boolean"
+    "en_price": {
+      "type": "integer",
+      "required": true
+    },
+    "th_price": {
+      "type": "integer"
+    },
+    "ph_price": {
+      "type": "integer"
+    },
+    "vn_price": {
+      "type": "integer"
     },
     "quantity": {
       "type": "integer",
@@ -32,26 +40,22 @@
       "type": "integer",
       "required": true
     },
-    "quantity_management": {
-      "type": "boolean",
+    "active": {
+      "required": true,
       "default": true,
-      "required": true
+      "type": "boolean"
+    },
+    "quantity_management": {
+      "default": true,
+      "required": true,
+      "type": "boolean"
     },
     "memo": {
       "type": "text"
     },
-    "th_price": {
-      "type": "integer"
-    },
-    "ph_price": {
-      "type": "integer"
-    },
-    "en_price": {
-      "type": "integer",
-      "required": true
-    },
-    "vn_price": {
-      "type": "integer"
+    "name": {
+      "required": true,
+      "type": "string"
     }
   }
 }

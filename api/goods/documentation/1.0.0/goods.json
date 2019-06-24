@@ -799,17 +799,27 @@
           "kr_hashtag": {
             "type": "string"
           },
+          "option": {
+            "type": "json"
+          },
+          "tax_type": {
+            "type": "integer"
+          },
+          "tax": {
+            "type": "integer"
+          },
           "options": {
             "type": "array",
             "items": {
               "required": [
                 "id",
                 "kr_price",
-                "active",
+                "en_price",
                 "quantity",
                 "sold_quantity",
+                "active",
                 "quantity_management",
-                "en_price"
+                "name"
               ],
               "properties": {
                 "id": {
@@ -821,20 +831,8 @@
                 "kr_price": {
                   "type": "integer"
                 },
-                "active": {
-                  "type": "boolean"
-                },
-                "quantity": {
+                "en_price": {
                   "type": "integer"
-                },
-                "sold_quantity": {
-                  "type": "integer"
-                },
-                "quantity_management": {
-                  "type": "boolean"
-                },
-                "memo": {
-                  "type": "string"
                 },
                 "th_price": {
                   "type": "integer"
@@ -842,23 +840,29 @@
                 "ph_price": {
                   "type": "integer"
                 },
-                "en_price": {
-                  "type": "integer"
-                },
                 "vn_price": {
                   "type": "integer"
+                },
+                "quantity": {
+                  "type": "integer"
+                },
+                "sold_quantity": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "boolean"
+                },
+                "quantity_management": {
+                  "type": "boolean"
+                },
+                "memo": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
                 }
               }
             }
-          },
-          "option": {
-            "type": "json"
-          },
-          "tax_type": {
-            "type": "integer"
-          },
-          "tax": {
-            "type": "integer"
           }
         }
       },
@@ -939,12 +943,6 @@
           "kr_hashtag": {
             "type": "string"
           },
-          "options": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "option": {
             "type": "json"
           },
@@ -953,6 +951,12 @@
           },
           "tax": {
             "type": "integer"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }

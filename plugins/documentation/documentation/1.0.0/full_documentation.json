@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "06/19/2019 5:39:12 PM"
+    "x-generation-date": "06/24/2019 5:43:26 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -7289,12 +7289,6 @@
                 "kr_hashtag": {
                   "type": "string"
                 },
-                "options": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
                 "option": {
                   "type": "json"
                 },
@@ -7303,6 +7297,12 @@
                 },
                 "tax": {
                   "type": "integer"
+                },
+                "options": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -7809,17 +7809,27 @@
           "kr_hashtag": {
             "type": "string"
           },
+          "option": {
+            "type": "json"
+          },
+          "tax_type": {
+            "type": "integer"
+          },
+          "tax": {
+            "type": "integer"
+          },
           "options": {
             "type": "array",
             "items": {
               "required": [
                 "id",
                 "kr_price",
-                "active",
+                "en_price",
                 "quantity",
                 "sold_quantity",
+                "active",
                 "quantity_management",
-                "en_price"
+                "name"
               ],
               "properties": {
                 "id": {
@@ -7831,20 +7841,8 @@
                 "kr_price": {
                   "type": "integer"
                 },
-                "active": {
-                  "type": "boolean"
-                },
-                "quantity": {
+                "en_price": {
                   "type": "integer"
-                },
-                "sold_quantity": {
-                  "type": "integer"
-                },
-                "quantity_management": {
-                  "type": "boolean"
-                },
-                "memo": {
-                  "type": "string"
                 },
                 "th_price": {
                   "type": "integer"
@@ -7852,23 +7850,29 @@
                 "ph_price": {
                   "type": "integer"
                 },
-                "en_price": {
-                  "type": "integer"
-                },
                 "vn_price": {
                   "type": "integer"
+                },
+                "quantity": {
+                  "type": "integer"
+                },
+                "sold_quantity": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "boolean"
+                },
+                "quantity_management": {
+                  "type": "boolean"
+                },
+                "memo": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
                 }
               }
             }
-          },
-          "option": {
-            "type": "json"
-          },
-          "tax_type": {
-            "type": "integer"
-          },
-          "tax": {
-            "type": "integer"
           }
         }
       },
@@ -7949,12 +7953,6 @@
           "kr_hashtag": {
             "type": "string"
           },
-          "options": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "option": {
             "type": "json"
           },
@@ -7963,6 +7961,12 @@
           },
           "tax": {
             "type": "integer"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
@@ -7970,11 +7974,12 @@
         "required": [
           "id",
           "kr_price",
-          "active",
+          "en_price",
           "quantity",
           "sold_quantity",
+          "active",
           "quantity_management",
-          "en_price"
+          "name"
         ],
         "properties": {
           "id": {
@@ -8073,12 +8078,6 @@
               "kr_hashtag": {
                 "type": "string"
               },
-              "options": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "option": {
                 "type": "json"
               },
@@ -8087,21 +8086,39 @@
               },
               "tax": {
                 "type": "integer"
+              },
+              "options": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           },
           "kr_price": {
             "type": "integer"
           },
-          "active": {
-            "type": "boolean",
-            "default": true
+          "en_price": {
+            "type": "integer"
+          },
+          "th_price": {
+            "type": "integer"
+          },
+          "ph_price": {
+            "type": "integer"
+          },
+          "vn_price": {
+            "type": "integer"
           },
           "quantity": {
             "type": "integer"
           },
           "sold_quantity": {
             "type": "integer"
+          },
+          "active": {
+            "type": "boolean",
+            "default": true
           },
           "quantity_management": {
             "type": "boolean",
@@ -8110,28 +8127,20 @@
           "memo": {
             "type": "string"
           },
-          "th_price": {
-            "type": "integer"
-          },
-          "ph_price": {
-            "type": "integer"
-          },
-          "en_price": {
-            "type": "integer"
-          },
-          "vn_price": {
-            "type": "integer"
+          "name": {
+            "type": "string"
           }
         }
       },
       "NewOption": {
         "required": [
           "kr_price",
-          "active",
+          "en_price",
           "quantity",
           "sold_quantity",
+          "active",
           "quantity_management",
-          "en_price"
+          "name"
         ],
         "properties": {
           "good": {
@@ -8140,15 +8149,27 @@
           "kr_price": {
             "type": "integer"
           },
-          "active": {
-            "type": "boolean",
-            "default": true
+          "en_price": {
+            "type": "integer"
+          },
+          "th_price": {
+            "type": "integer"
+          },
+          "ph_price": {
+            "type": "integer"
+          },
+          "vn_price": {
+            "type": "integer"
           },
           "quantity": {
             "type": "integer"
           },
           "sold_quantity": {
             "type": "integer"
+          },
+          "active": {
+            "type": "boolean",
+            "default": true
           },
           "quantity_management": {
             "type": "boolean",
@@ -8157,17 +8178,8 @@
           "memo": {
             "type": "string"
           },
-          "th_price": {
-            "type": "integer"
-          },
-          "ph_price": {
-            "type": "integer"
-          },
-          "en_price": {
-            "type": "integer"
-          },
-          "vn_price": {
-            "type": "integer"
+          "name": {
+            "type": "string"
           }
         }
       },
@@ -8836,12 +8848,6 @@
                 "kr_hashtag": {
                   "type": "string"
                 },
-                "options": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
                 "option": {
                   "type": "json"
                 },
@@ -8850,6 +8856,12 @@
                 },
                 "tax": {
                   "type": "integer"
+                },
+                "options": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
