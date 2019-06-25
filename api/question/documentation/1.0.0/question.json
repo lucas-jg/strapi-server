@@ -588,6 +588,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "orders": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           },

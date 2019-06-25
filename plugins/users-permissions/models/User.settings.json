@@ -76,6 +76,10 @@
     "addresses": {
       "collection": "address",
       "via": "owner"
+    },
+    "orders": {
+      "collection": "order",
+      "via": "user"
     }
   },
   "collectionName": "users-permissions_user"

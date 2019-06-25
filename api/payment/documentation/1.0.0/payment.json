@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/follows": {
+    "/payments": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Follow"
+                    "$ref": "#/components/schemas/Payment"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Follow"
+          "Payment"
         ],
         "parameters": [
           {
@@ -195,7 +195,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Follow"
+                  "$ref": "#/components/schemas/Payment"
                 }
               }
             }
@@ -233,7 +233,7 @@
         },
         "summary": "",
         "tags": [
-          "Follow"
+          "Payment"
         ],
         "requestBody": {
           "description": "",
@@ -241,14 +241,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewFollow"
+                "$ref": "#/components/schemas/NewPayment"
               }
             }
           }
         }
       }
     },
-    "/follows/count": {
+    "/payments/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -300,12 +300,12 @@
         },
         "summary": "",
         "tags": [
-          "Follow"
+          "Payment"
         ],
         "parameters": []
       }
     },
-    "/follows/{id}": {
+    "/payments/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -315,7 +315,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Follow"
+                  "$ref": "#/components/schemas/Payment"
                 }
               }
             }
@@ -353,7 +353,7 @@
         },
         "summary": "",
         "tags": [
-          "Follow"
+          "Payment"
         ],
         "parameters": [
           {
@@ -377,7 +377,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Follow"
+                  "$ref": "#/components/schemas/Payment"
                 }
               }
             }
@@ -415,7 +415,7 @@
         },
         "summary": "",
         "tags": [
-          "Follow"
+          "Payment"
         ],
         "requestBody": {
           "description": "",
@@ -423,7 +423,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewFollow"
+                "$ref": "#/components/schemas/NewPayment"
               }
             }
           }
@@ -489,7 +489,7 @@
         },
         "summary": "",
         "tags": [
-          "Follow"
+          "Payment"
         ],
         "parameters": [
           {
@@ -508,7 +508,7 @@
   },
   "components": {
     "schemas": {
-      "Follow": {
+      "Payment": {
         "required": [
           "id"
         ],
@@ -516,177 +516,67 @@
           "id": {
             "type": "string"
           },
-          "follower": {
-            "required": [
-              "id",
-              "username",
-              "email"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "username": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "password": {
-                "type": "string"
-              },
-              "resetPasswordToken": {
-                "type": "string"
-              },
-              "confirmed": {
-                "type": "boolean"
-              },
-              "blocked": {
-                "type": "boolean"
-              },
-              "role": {
-                "type": "string"
-              },
-              "goods": {
-                "type": "array",
-                "items": {
+          "orders": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
                   "type": "string"
-                }
-              },
-              "businessprofile": {
-                "type": "string"
-              },
-              "following_follows": {
-                "type": "array",
-                "items": {
+                },
+                "good": {
                   "type": "string"
-                }
-              },
-              "follows": {
-                "type": "array",
-                "items": {
+                },
+                "option": {
                   "type": "string"
-                }
-              },
-              "reviews": {
-                "type": "array",
-                "items": {
+                },
+                "address": {
                   "type": "string"
-                }
-              },
-              "questions": {
-                "type": "array",
-                "items": {
+                },
+                "user": {
                   "type": "string"
-                }
-              },
-              "addresses": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "orders": {
-                "type": "array",
-                "items": {
+                },
+                "kr_price": {
+                  "type": "integer"
+                },
+                "vn_price": {
+                  "type": "integer"
+                },
+                "en_price": {
+                  "type": "integer"
+                },
+                "ph_price": {
+                  "type": "integer"
+                },
+                "th_price": {
+                  "type": "integer"
+                },
+                "quantity": {
+                  "type": "integer"
+                },
+                "payment": {
                   "type": "string"
                 }
               }
             }
           },
-          "followee": {
-            "required": [
-              "id",
-              "username",
-              "email"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "username": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "password": {
-                "type": "string"
-              },
-              "resetPasswordToken": {
-                "type": "string"
-              },
-              "confirmed": {
-                "type": "boolean"
-              },
-              "blocked": {
-                "type": "boolean"
-              },
-              "role": {
-                "type": "string"
-              },
-              "goods": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "businessprofile": {
-                "type": "string"
-              },
-              "following_follows": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "follows": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "reviews": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "questions": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "addresses": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "orders": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
+          "state": {
+            "type": "integer"
           }
         }
       },
-      "NewFollow": {
+      "NewPayment": {
         "properties": {
-          "follower": {
-            "type": "string"
+          "orders": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
-          "followee": {
-            "type": "string"
+          "state": {
+            "type": "integer"
           }
         }
       }
@@ -694,7 +584,7 @@
   },
   "tags": [
     {
-      "name": "Follow"
+      "name": "Payment"
     }
   ]
 }

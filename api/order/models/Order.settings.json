@@ -1,0 +1,53 @@
+{
+  "connection": "default",
+  "collectionName": "orders",
+  "info": {
+    "name": "order",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "good": {
+      "model": "goods",
+      "via": "orders"
+    },
+    "option": {
+      "model": "option",
+      "via": "orders"
+    },
+    "address": {
+      "model": "address"
+    },
+    "user": {
+      "model": "user",
+      "via": "orders",
+      "plugin": "users-permissions"
+    },
+    "kr_price": {
+      "type": "integer"
+    },
+    "vn_price": {
+      "type": "integer"
+    },
+    "en_price": {
+      "type": "integer"
+    },
+    "ph_price": {
+      "type": "integer"
+    },
+    "th_price": {
+      "type": "integer"
+    },
+    "quantity": {
+      "type": "integer"
+    },
+    "payment": {
+      "model": "payment",
+      "via": "orders"
+    }
+  }
+}

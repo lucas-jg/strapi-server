@@ -109,6 +109,10 @@
     "options": {
       "collection": "option",
       "via": "good"
+    },
+    "orders": {
+      "collection": "order",
+      "via": "good"
     }
   }
 }

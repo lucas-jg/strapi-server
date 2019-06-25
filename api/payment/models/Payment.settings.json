@@ -1,0 +1,22 @@
+{
+  "connection": "default",
+  "collectionName": "payments",
+  "info": {
+    "name": "payment",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "orders": {
+      "collection": "order",
+      "via": "payment"
+    },
+    "state": {
+      "type": "integer"
+    }
+  }
+}

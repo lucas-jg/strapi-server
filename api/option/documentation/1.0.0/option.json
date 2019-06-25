@@ -630,6 +630,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "orders": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           },
@@ -667,6 +673,52 @@
           },
           "name": {
             "type": "string"
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "good": {
+                  "type": "string"
+                },
+                "option": {
+                  "type": "string"
+                },
+                "address": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                },
+                "kr_price": {
+                  "type": "integer"
+                },
+                "vn_price": {
+                  "type": "integer"
+                },
+                "en_price": {
+                  "type": "integer"
+                },
+                "ph_price": {
+                  "type": "integer"
+                },
+                "th_price": {
+                  "type": "integer"
+                },
+                "quantity": {
+                  "type": "integer"
+                },
+                "payment": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -718,6 +770,12 @@
           },
           "name": {
             "type": "string"
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }

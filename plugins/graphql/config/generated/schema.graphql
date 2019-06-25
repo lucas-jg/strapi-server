@@ -156,6 +156,22 @@ type createOptionPayload {
   option: Option
 }
 
+input createOrderInput {
+  data: OrderInput
+}
+
+type createOrderPayload {
+  order: Order
+}
+
+input createPaymentInput {
+  data: PaymentInput
+}
+
+type createPaymentPayload {
+  payment: Payment
+}
+
 input createQuestionInput {
   data: QuestionInput
 }
@@ -247,6 +263,22 @@ input deleteOptionInput {
 
 type deleteOptionPayload {
   option: Option
+}
+
+input deleteOrderInput {
+  where: InputID
+}
+
+type deleteOrderPayload {
+  order: Order
+}
+
+input deletePaymentInput {
+  where: InputID
+}
+
+type deletePaymentPayload {
+  payment: Payment
 }
 
 input deleteQuestionInput {
@@ -374,6 +406,7 @@ input editGoodsInput {
   tax_type: Int
   tax: Int
   options: [ID]
+  orders: [ID]
 }
 
 input editOptionInput {
@@ -389,6 +422,26 @@ input editOptionInput {
   quantity_management: Boolean
   memo: String
   name: String
+  orders: [ID]
+}
+
+input editOrderInput {
+  good: ID
+  option: ID
+  address: ID
+  user: ID
+  kr_price: Int
+  vn_price: Int
+  en_price: Int
+  ph_price: Int
+  th_price: Int
+  quantity: Int
+  payment: ID
+}
+
+input editPaymentInput {
+  orders: [ID]
+  state: Int
 }
 
 input editQuestionInput {
@@ -428,6 +481,7 @@ input editUserInput {
   reviews: [ID]
   questions: [ID]
   addresses: [ID]
+  orders: [ID]
 }
 
 input FileInput {
@@ -489,6 +543,7 @@ type Goods {
   thumbnail(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   detail_image(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   options(sort: String, limit: Int, start: Int, where: JSON): [Option]
+  orders(sort: String, limit: Int, start: Int, where: JSON): [Order]
 }
 
 input GoodsInput {
@@ -521,6 +576,7 @@ input GoodsInput {
   tax_type: Int
   tax: Int
   options: [ID]
+  orders: [ID]
 }
 
 input InputID {
@@ -535,7 +591,7 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Address | createAddressPayload | updateAddressPayload | deleteAddressPayload | Businessmanager | createBusinessmanagerPayload | updateBusinessmanagerPayload | deleteBusinessmanagerPayload | Businessprofile | createBusinessprofilePayload | updateBusinessprofilePayload | deleteBusinessprofilePayload | Category | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | Follow | createFollowPayload | updateFollowPayload | deleteFollowPayload | Goods | createGoodsPayload | updateGoodsPayload | deleteGoodsPayload | Option | createOptionPayload | updateOptionPayload | deleteOptionPayload | Question | createQuestionPayload | updateQuestionPayload | deleteQuestionPayload | Review | createReviewPayload | updateReviewPayload | deleteReviewPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Address | createAddressPayload | updateAddressPayload | deleteAddressPayload | Businessmanager | createBusinessmanagerPayload | updateBusinessmanagerPayload | deleteBusinessmanagerPayload | Businessprofile | createBusinessprofilePayload | updateBusinessprofilePayload | deleteBusinessprofilePayload | Category | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | Follow | createFollowPayload | updateFollowPayload | deleteFollowPayload | Goods | createGoodsPayload | updateGoodsPayload | deleteGoodsPayload | Option | createOptionPayload | updateOptionPayload | deleteOptionPayload | Order | createOrderPayload | updateOrderPayload | deleteOrderPayload | Payment | createPaymentPayload | updatePaymentPayload | deletePaymentPayload | Question | createQuestionPayload | updateQuestionPayload | deleteQuestionPayload | Review | createReviewPayload | updateReviewPayload | deleteReviewPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
 
 type Mutation {
   createAddress(input: createAddressInput): createAddressPayload
@@ -559,6 +615,12 @@ type Mutation {
   createOption(input: createOptionInput): createOptionPayload
   updateOption(input: updateOptionInput): updateOptionPayload
   deleteOption(input: deleteOptionInput): deleteOptionPayload
+  createOrder(input: createOrderInput): createOrderPayload
+  updateOrder(input: updateOrderInput): updateOrderPayload
+  deleteOrder(input: deleteOrderInput): deleteOrderPayload
+  createPayment(input: createPaymentInput): createPaymentPayload
+  updatePayment(input: updatePaymentInput): updatePaymentPayload
+  deletePayment(input: deletePaymentInput): deletePaymentPayload
   createQuestion(input: createQuestionInput): createQuestionPayload
   updateQuestion(input: updateQuestionInput): updateQuestionPayload
   deleteQuestion(input: deleteQuestionInput): deleteQuestionPayload
@@ -602,6 +664,7 @@ type Option {
   quantity_management: Boolean!
   memo: String
   name: String!
+  orders(sort: String, limit: Int, start: Int, where: JSON): [Order]
 }
 
 input OptionInput {
@@ -617,6 +680,51 @@ input OptionInput {
   quantity_management: Boolean!
   memo: String
   name: String!
+  orders: [ID]
+}
+
+type Order {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  good: Goods
+  option: Option
+  address: Address
+  user: UsersPermissionsUser
+  kr_price: Int
+  vn_price: Int
+  en_price: Int
+  ph_price: Int
+  th_price: Int
+  quantity: Int
+  payment: Payment
+}
+
+input OrderInput {
+  good: ID
+  option: ID
+  address: ID
+  user: ID
+  kr_price: Int
+  vn_price: Int
+  en_price: Int
+  ph_price: Int
+  th_price: Int
+  quantity: Int
+  payment: ID
+}
+
+type Payment {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  state: Int
+  orders(sort: String, limit: Int, start: Int, where: JSON): [Order]
+}
+
+input PaymentInput {
+  orders: [ID]
+  state: Int
 }
 
 type Query {
@@ -634,6 +742,10 @@ type Query {
   goods(sort: String, limit: Int, start: Int, where: JSON): [Goods]
   option(id: ID!): Option
   options(sort: String, limit: Int, start: Int, where: JSON): [Option]
+  order(id: ID!): Order
+  orders(sort: String, limit: Int, start: Int, where: JSON): [Order]
+  payment(id: ID!): Payment
+  payments(sort: String, limit: Int, start: Int, where: JSON): [Payment]
   question(id: ID!): Question
   questions(sort: String, limit: Int, start: Int, where: JSON): [Question]
   review(id: ID!): Review
@@ -753,6 +865,24 @@ type updateOptionPayload {
   option: Option
 }
 
+input updateOrderInput {
+  where: InputID
+  data: editOrderInput
+}
+
+type updateOrderPayload {
+  order: Order
+}
+
+input updatePaymentInput {
+  where: InputID
+  data: editPaymentInput
+}
+
+type updatePaymentPayload {
+  payment: Payment
+}
+
 input updateQuestionInput {
   where: InputID
   data: editQuestionInput
@@ -824,6 +954,7 @@ input UserInput {
   reviews: [ID]
   questions: [ID]
   addresses: [ID]
+  orders: [ID]
 }
 
 type UsersPermissionsMe {
@@ -876,4 +1007,5 @@ type UsersPermissionsUser {
   reviews(sort: String, limit: Int, start: Int, where: JSON): [Review]
   questions(sort: String, limit: Int, start: Int, where: JSON): [Question]
   addresses(sort: String, limit: Int, start: Int, where: JSON): [Address]
+  orders(sort: String, limit: Int, start: Int, where: JSON): [Order]
 }
